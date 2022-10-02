@@ -1,35 +1,41 @@
+// Modulo que permite hacer consultas en la consola
+//
 'use strict'
+// Este es un script de configuración para la base de datos
 
-const debug = require('debug')('platziverse:db:setup')
+// namespace de qué modulo y qué archivo se está haciendo debug
+// iot:db:setup
+const debug = require('debug')('iot:db:setup')
+
+// const inquirer = require('inquirer')
+// Para estilizar strings
+// const chalk = require('chalk')
 const db = require('./')
-/* const inquirer = require('inquirer')
-        const chalk = require('chalk') */
 
 // Se crea objeto prompt para hacer preguntas al usuario (Son promesas)
 
-/* const prompt = inquirer.createPromptModule() */
-
+// Se define función asincróna
 async function setup () {
-  /* const answer = await prompt([{
-        // Pregunta si/no
-        type: 'confirm',
-        name: 'setup',
-        message: 'This will destroy your database, are you sure?'
-      }])
+  /* inquirer.prompt([{
+      type: 'confirm',
+      name: 'setup',
+      message: 'Esto destruye la base de datos'
+    }]) */
 
-      if (!answer.setup) {
-        return console.log('All will be ok')
-      } */
-
+  // Objeto js de configuración
   const config = {
+    // Propiedades, con variable de entorno de la forma DB_NAME
     database: process.env.DB_NAME || 'iot',
     username: process.env.DB_USER || 'piot',
     password: process.env.DB_PASS || 'pablo',
     host: process.env.DB_HOST || 'localhost',
+    // Propiedad del dialecto, en este caso es postgresql (Podría ser mysql)
     dialect: 'postgres',
+    // Para debug
     logging: s => debug(s),
     setup: true
   }
+  // Obtiene el objeto de base de datos
   await db(config).catch(handleFatalError)
 
   console.log('Éxito!')
