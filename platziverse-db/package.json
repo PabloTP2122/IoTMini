@@ -1,0 +1,32 @@
+{
+    "name": "platziverse-db",
+    "version": "1.0.0",
+    "description": "A simple IoT platform - DB module",
+    "main": "index.js",
+    "scripts": {
+        "setup": "@powershell $env:DEBUG='platziverse:*';node setup.js",
+        "lint": "standard",
+        "lint-fix": "standard --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PabloTP2122/IoTGreen.git"
+    },
+    "author": "Pablo Torres Pérez",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PabloTP2122/IoTGreen/issues"
+    },
+    "homepage": "https://github.com/PabloTP2122/IoTGreen#readme",
+    "devDependencies": {
+        "standard": "^17.0.0"
+    },
+    "dependencies": {
+        "chalk": "^5.0.1",
+        "debug": "^4.3.4",
+        "inquirer": "^9.1.0",
+        "pg": "^8.8.0",
+        "pg-hstore": "^2.3.4",
+        "sequelize": "^6.21.4"
+    }
+}
